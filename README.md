@@ -58,7 +58,7 @@ A small **Streamlit** app for summarizing **Amazon- or Flipkart-style** product 
 ## Run the app
 
 ```bash
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
 Open the URL shown in the terminal (usually `http://localhost:8501`), paste reviews, then click **Analyze**.
