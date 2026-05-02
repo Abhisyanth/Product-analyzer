@@ -77,6 +77,3 @@ Open the URL shown in the terminal (usually `http://localhost:8501`), paste revi
 - Output is a **summary of the text you pasted**; it does not verify facts or fetch live product data.  
 - Very long pastes use more tokens; stay within Groq’s limits for your account.
 
-## License
-
-Specify your license here (for example MIT), or remove this section if the repo is private and you prefer not to state one.
