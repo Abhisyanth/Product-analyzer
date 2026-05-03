@@ -8,11 +8,12 @@ load_dotenv()
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 
-groq_api_key = os.getenv("GROQ_API_KEY")
+groq_api_key = (os.getenv("GROQ_API_KEY") or "").strip()
 
 
 def clear_review_box() -> None:
     st.session_state["review_box"] = ""
+    st.session_state.pop("last_report", None)
 
 
 st.set_page_config(page_title="E-Commerce Review Analyzer", layout="wide")
@@ -49,9 +50,22 @@ if analyze:
             )
         )
         human = HumanMessage(content=review)
-        response = llm.invoke([system, human])
-        st.markdown(response.content)
-    
 
+        try:
+            response = llm.invoke([system, human])
+            st.session_state["last_report"] = response.content
+            st.markdown(response.content)
+        except Exception as e:
+            st.error(f"Error: {e}")
+
+
+if st.session_state.get("last_report"):
+    st.download_button(
+        label="Download report (.md)",
+        data=st.session_state["last_report"],
+        file_name="review-analysis.md",
+        mime="text/markdown",
+        key="download_report",
+    )
 
 
