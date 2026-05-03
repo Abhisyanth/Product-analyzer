@@ -91,3 +91,6 @@ Open the URL shown in the terminal (usually `http://localhost:8501`), paste revi
 - Long inputs use more tokens; stay within your Groq quota.  
 - Do not paste passwords, payment data, or other sensitive information.
 
+## Live App:
+http://localhost:8501/
+
